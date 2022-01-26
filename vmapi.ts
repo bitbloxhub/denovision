@@ -21,9 +21,15 @@ export class VPC extends Resource {
 export class VM extends Resource {
     image!: ArrayBuffer
     vpc!: VPC
+    public!: boolean
+    ip4!: string
+    ip6!: string
+    ip4p!: string
+    ip6p!: string
     // when inheriting, make sure to use super.create_edit()
-    protected create_edit (args: any) {
+    create_edit (args: any) {
         this.image = args["image"]
+        this.public = args["public"]
         this.vpc = args["vpc"]
         this.vpc.addVM(this)
     }
